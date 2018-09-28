@@ -19,7 +19,7 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    switch(initUnit) {
+    switch(initUnit.toLowerCase()) {
       case 'gal':
           return 'L';
           break;
@@ -39,12 +39,12 @@ function ConvertHandler() {
           return 'mi';
           break;
       default:
-          return 'Invalid unit';
+          return 'invalid unit';
     }
   };
 
   this.spellOutUnit = function(unit) {
-    switch(unit) {
+    switch(unit.toLowerCase()) {
       case 'gal':
           return 'gallons';
           break;
@@ -64,7 +64,7 @@ function ConvertHandler() {
           return 'kilometers';
           break;
       default:
-          return 'Invalid unit';
+          return 'invalid unit';
     }
   };
   
