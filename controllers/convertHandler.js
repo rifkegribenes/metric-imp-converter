@@ -39,7 +39,7 @@ function ConvertHandler() {
           return 'mi';
           break;
       default:
-          return undefined;
+          return 'Invalid unit';
     }
   };
 
@@ -64,7 +64,7 @@ function ConvertHandler() {
           return 'kilometers';
           break;
       default:
-          return undefined;
+          return 'Invalid unit';
     }
   };
   
@@ -103,17 +103,30 @@ function ConvertHandler() {
           return undefined;
     }
     let result;
-    if (operator === 'multiply') {
-      result = initNum * formula;
+    let parsed = parseFloat(initNum);
+    if (typeof parsed === "number") {
+      if (operator === 'multiply') {
+        result = initNum * formula;
+      } else {
+        result = initNum / formula;
+      }
+      return parseFloat((result).toFixed(5));
     } else {
-      result = initNum / formula;
+      return "invalid number";
     }
-    return parseFloat((result).toFixed(5));
+    
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
-    return result;
+    if (typeof initNum !== "number" && returnUnit === "invalid unit") {
+      return "invalid number and unit";
+    } else if (typeof initNum !== "number") {
+      return "invalid number";
+    } else if (returnUnit === "invalid unit") {
+      return "invalid unit";
+    } else {
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    }
   };
   
 }
