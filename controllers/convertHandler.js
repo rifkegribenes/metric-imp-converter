@@ -9,15 +9,13 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    var result;
-    
-    return result;
+    const array = input.match(/[^\d]+|\d+/g);
+    return array[0];
   };
   
   this.getUnit = function(input) {
-    var result;
-    
-    return result;
+    const array = input.match(/[^\d]+|\d+/g);
+    return array[0];
   };
   
   this.getReturnUnit = function(initUnit) {
