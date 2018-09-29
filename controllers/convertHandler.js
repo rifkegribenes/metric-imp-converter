@@ -10,36 +10,42 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     const array = input.match(/[^\d]+|\d+/g);
-    return array[0];
+    let number = array[0] || "";
+    number = number.split('/');
+    if (number[0] === '') { number = [] }
+    switch(number.length) {
+      case 0:
+        return 1;
+        break;
+      case 1:
+        return number[0];
+        break;
+      case 2:
+        return +number[0] / +number[1];
+        break;
+      default:
+        return 'invalid number';
+    }
   };
   
   this.getUnit = function(input) {
     const array = input.match(/[^\d]+|\d+/g);
-    return array[1];
+    const units = ['gal','l','mi','km','lbs','kg'];
+    if (units.indexOf(array[1]) < 0) {
+      return "invalid unit";
+    } else {
+      return array[1];
+    }
   };
   
   this.getReturnUnit = function(initUnit) {
-    switch(initUnit.toLowerCase()) {
-      case 'gal':
-          return 'L';
-          break;
-      case 'L':
-          return 'gal';
-          break;
-      case 'lbs':
-          return 'kg';
-          break;
-      case 'kg':
-          return 'lbs';
-          break;
-      case 'mi':
-          return 'km';
-          break;
-      case 'km':
-          return 'mi';
-          break;
-      default:
-          return 'invalid unit';
+    var input = ['gal','l','mi','km','lbs','kg'];
+    var output = ['L','gal','km','mi','kg','lbs'];
+    const index = input.indexOf(initUnit.toLowerCase());
+    if (index < 0) {
+      return "invalid unit"
+    } else {  
+      return output[index];
     }
   };
 
@@ -47,7 +53,11 @@ function ConvertHandler() {
     var input = ['gal','l','mi','km','lbs','kg'];
     var output = ['gallons','liters','miles','kilometers','pounds','kilograms'];
     const index = input.indexOf(unit.toLowerCase());
-    return output[index];
+    if (index < 0) {
+      return "invalid unit"
+    } else {  
+      return output[index];
+    }
   };
   
   this.convert = function(initNum, initUnit) {
@@ -56,7 +66,7 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     let formula;
     let operator;
-    switch(initUnit) {
+    switch(initUnit.toLowerCase()) {
       case 'gal':
         formula = galToL;
         operator = 'multiply';
