@@ -109,35 +109,35 @@ chai.suite('Unit Tests', function(){
     
     chai.test('L to Gal', function(done) {
       var input = [5, 'L'];
-      var expected = 18.9271;
+      var expected = 1.32086;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
       done();
     });
     
     chai.test('Mi to Km', function(done) {
-      var input = [5, 'gal'];
-      var expected = 18.9271;
+      var input = [5, 'mi'];
+      var expected = 8.04672;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
       done();
     });
     
     chai.test('Km to Mi', function(done) {
-      var input = [5, 'gal'];
-      var expected = 18.9271;
+      var input = [5, 'km'];
+      var expected = 3.10686;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
       done();
     });
     
     chai.test('Lbs to Kg', function(done) {
-      var input = [5, 'gal'];
-      var expected = 18.9271;
+      var input = [5, 'lbs'];
+      var expected = 2.26796;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
       done();
     });
     
     chai.test('Kg to Lbs', function(done) {
-      var input = [5, 'gal'];
-      var expected = 18.9271;
+      var input = [5, 'kg'];
+      var expected = 11.02310;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
       done();
     });
