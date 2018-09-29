@@ -9,6 +9,8 @@
 var chaiHttp = require('chai-http');
 var chai = require('chai');
 var assert = chai.assert;
+var suite = chai.suite;
+var test = chai.test;
 var server = require('../server');
 
 chai.use(chaiHttp);

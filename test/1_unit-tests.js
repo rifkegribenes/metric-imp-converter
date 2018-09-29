@@ -7,7 +7,10 @@
 */
 
 var chai = require('chai');
+var mocha = require('mocha');
 var assert = chai.assert;
+var suite = mocha.suite;
+var test = mocha.test;
 var ConvertHandler = require('../controllers/convertHandler.js');
 
 var convertHandler = new ConvertHandler();
