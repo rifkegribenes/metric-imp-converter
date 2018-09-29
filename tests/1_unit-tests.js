@@ -12,7 +12,7 @@ var ConvertHandler = require('../controllers/convertHandler.js');
 
 var convertHandler = new ConvertHandler();
 
-chai.suite('Unit Tests', function(){
+suite('Unit Tests', function(){
   
   chai.suite('Function convertHandler.getNum(input)', function() {
     
