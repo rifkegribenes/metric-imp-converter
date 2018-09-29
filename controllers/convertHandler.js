@@ -68,43 +68,25 @@ function ConvertHandler() {
     let operator;
     switch(initUnit.toLowerCase()) {
       case 'gal':
-        formula = galToL;
-        operator = 'multiply';
-          break;
+        return initNum * galToL;
+        break;
       case 'L':
-        formula = galToL;
-        operator = 'divide';
-          break;
+        return initNum / galToL;
+        break;
       case 'lbs':
-        formula = lbsToKg;
-        operator = 'multiply';
-          break;
+        return initNum * lbsToKg;
+        break;
       case 'kg':
-        formula = lbsToKg;
-        operator = 'divide';
-          break;
+        return initNum / lbsToKg;
+        break;
       case 'mi':
-        formula = miToKm;
-        operator = 'multiply';
-          break;
+        return initNum * miToKm;
+        break;
       case 'km':
-        formula = miToKm;
-        operator = 'divide';
-          break;
+        return initNum / miToKm;
+        break;
       default:
-          return undefined;
-    }
-    let result;
-    let parsed = parseFloat(initNum);
-    if (typeof parsed === "number") {
-      if (operator === 'multiply') {
-        result = initNum * formula;
-      } else {
-        result = initNum / formula;
-      }
-      return parseFloat((result).toFixed(5));
-    } else {
-      return "invalid number";
+        return undefined;
     }
     
   };
@@ -117,7 +99,7 @@ function ConvertHandler() {
     } else if (returnUnit === "invalid unit") {
       return "invalid unit";
     } else {
-    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${+returnNum.toFixed(5)} ${this.spellOutUnit(returnUnit)}`;
     }
   };
   
