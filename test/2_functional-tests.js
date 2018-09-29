@@ -8,9 +8,10 @@
 
 var chaiHttp = require('chai-http');
 var chai = require('chai');
+var mocha = require('mocha');
 var assert = chai.assert;
-var suite = chai.suite;
-var test = chai.test;
+var suite = mocha.suite;
+var test = mocha.test;
 var server = require('../server');
 
 chai.use(chaiHttp);

@@ -9,8 +9,7 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    const array = input.match(/[^\d]+|\d+/g);
-    let number = array[0] || "";
+    let number = input.slice(0,input.match(/[a-z]/i).index) || '';
     number = number.split('/');
     if (number[0] === '') { number = [] }
     switch(number.length) {
@@ -29,18 +28,18 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    const array = input.match(/[^\d]+|\d+/g);
+    const unit = input.slice(input.match(/[a-z]/i).index);
     const units = ['gal','l','mi','km','lbs','kg'];
-    if (units.indexOf(array[1]) < 0) {
+    if (units.indexOf(unit) < 0) {
       return "invalid unit";
     } else {
-      return array[1];
+      return unit;
     }
   };
   
   this.getReturnUnit = function(initUnit) {
     var input = ['gal','l','mi','km','lbs','kg'];
-    var output = ['L','gal','km','mi','kg','lbs'];
+    var output = ['l','gal','km','mi','kg','lbs'];
     const index = input.indexOf(initUnit.toLowerCase());
     if (index < 0) {
       return "invalid unit"
