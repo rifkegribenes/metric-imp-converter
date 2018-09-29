@@ -44,28 +44,10 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function(unit) {
-    switch(unit.toLowerCase()) {
-      case 'gal':
-          return 'gallons';
-          break;
-      case 'L':
-          return 'liters';
-          break;
-      case 'lbs':
-          return 'pounds';
-          break;
-      case 'kg':
-          return 'kilograms';
-          break;
-      case 'mi':
-          return 'miles';
-          break;
-      case 'km':
-          return 'kilometers';
-          break;
-      default:
-          return 'invalid unit';
-    }
+    var input = ['gal','l','mi','km','lbs','kg'];
+    var output = ['gallons','liters','miles','kilometers','pounds','kilograms'];
+    const index = input.indexOf(unit.toLowerCase());
+    return output[index];
   };
   
   this.convert = function(initNum, initUnit) {
