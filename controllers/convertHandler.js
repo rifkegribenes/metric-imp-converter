@@ -30,7 +30,7 @@ function ConvertHandler() {
   this.getUnit = function(input) {
     const unit = input.slice(input.match(/[a-z]/i).index);
     const units = ['gal','l','mi','km','lbs','kg'];
-    if (units.indexOf(unit) < 0) {
+    if (units.indexOf(unit.toLowerCase()) < 0) {
       return "invalid unit";
     } else {
       return unit;
@@ -69,7 +69,7 @@ function ConvertHandler() {
       case 'gal':
         return initNum * galToL;
         break;
-      case 'L':
+      case 'l':
         return initNum / galToL;
         break;
       case 'lbs':
